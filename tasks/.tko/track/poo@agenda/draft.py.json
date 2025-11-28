@@ -52,8 +52,23 @@
         },
         {
             "label": "2025-11-25_23-07-19",
-            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id: str = id\n        self.__number: str = number\n\n    #def isValid(self) -> bool:\n\n    def getId(self) -> str:\n        return self.__id\n    def getNumber(self) -> str:\n        return self.__number\n\n    def __str__(self) -> str:\n        return f\"\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.__favorited: bool\n        self.__fones: list[Fone] = []\n        self.__name: str = name\n\n    def getFones(self):\n        return self.__fones\n    def getName(self) -> str:\n        return self.__name\n    \n    def setName(self, name: str) -> None:\n        self.__name = name\n\n    #def addFone(self, id: str, number: str) -> None: \n\n    #def rmFone(self, index: int) -> None:\n\n    #def toogleFavorited(self) -> None:\n\n    #def isFavorited(self) -> bool:\n\n    def __str__(self) -> str:\n        return f\"\"\n    \nclass Agenda:\n    def __init__(self):\n        self.__contacts: list[Contact] = []\n\n    #def __findPosByName(self, name: str) -> int:\n\n    def getContacts(self):\n        return self.__contacts\n\n    #def addContact(self, name: str, fones: list[Fone]):\n\n    #def getContact(self, name: str) -> Contact | None:\n\n    #def rmContact(self. name: str):\n\n    #def search(self, pattern: str):\n\n    #def getFavorited(self):\n\n    def __str__(self) -> str:\n        return f\"\"\n\ndef main():\n    agenda = Agenda\n    while True:\n        line: str = input()\n        print(\"$\" + line)\n        args: list[str] = line.split(\" \")\n        if args[0] == \"end\":\n            break\n        elif args[0] == \"show\":\n            print(agenda)\n        else:\n            print(\"comando invalido\")\n    \nmain()",
+            "content": "@@ -1498,25 +1498,8 @@\n  %22)%0A\n-        try:%0A    \n     \n@@ -1535,20 +1535,16 @@\n         \n-    \n break%0A  \n@@ -1549,20 +1549,16 @@\n         \n-   \n- \n elif arg\n@@ -1581,28 +1581,24 @@\n             \n-    \n print(agenda\n@@ -1603,48 +1603,8 @@\n da)%0A\n-            #elif args%5B0%5D == %22add%22:%0A    \n     \n@@ -1613,20 +1613,16 @@\n   else:%0A\n-    \n         \n@@ -1659,56 +1659,8 @@\n     \n-    except Exception as e:%0A            print(e) \n %0Amai\n",
             "lines": "76"
+        },
+        {
+            "label": "2025-11-28_17-31-24",
+            "content": "@@ -883,26 +883,8 @@\n n f%22\n-- %7Bself.__name%7D %5B%5D\n %22%0A  \n",
+            "lines": "79"
+        },
+        {
+            "label": "2025-11-28_17-43-22",
+            "content": "@@ -899,22 +899,10 @@\n me%7D \n-%7Bself.__fones%7D\n+%5B%5D\n %22%0A  \n",
+            "lines": "79"
+        },
+        {
+            "label": "2025-11-28_17-56-50",
+            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id: str = id\n        self.__number: str = number\n\n    #def isValid(self) -> bool:\n\n    def getId(self) -> str:\n        return self.__id\n    def getNumber(self) -> str:\n        return self.__number\n\n    def __str__(self) -> str:\n        return f\"\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.__favorited: bool\n        self.__fones: list[Fone] = []\n        self.__name: str = name\n\n    def getFones(self):\n        return self.__fones\n    def getName(self) -> str:\n        return self.__name\n    \n    def setName(self, name: str) -> None:\n        self.__name = name\n\n    #def addFone(self, id: str, number: str) -> None: \n\n    #def rmFone(self, index: int) -> None:\n\n    #def toogleFavorited(self) -> None:\n\n    #def isFavorited(self) -> bool:\n\n    def __str__(self) -> str:\n        return f\"- {self.__name} {self.__fones}\"\n    \nclass Agenda:\n    def __init__(self):\n        self.__contacts: list[Contact] = []\n\n    #def __findPosByName(self, name: str) -> int:\n\n    def getContacts(self):\n        return self.__contacts\n\n    #def addContact(self, name: str, fones: list[Fone]):\n\n    #def getContact(self, name: str) -> Contact | None:\n\n    #def rmContact(self. name: str):\n\n    #def search(self, pattern: str):\n\n    #def getFavorited(self):\n\n    def __str__(self) -> str:\n        return f\"\"\n\ndef main():\n    agenda = Agenda\n    while True:\n        line: str = input()\n        print(\"$\" + line)\n        args: list[str] = line.split(\" \")\n        try:\n            if args[0] == \"end\":\n                break\n            elif args[0] == \"show\":\n                print(agenda)\n            #elif args[0] == \"add\":\n            else:\n                print(\"comando invalido\")\n        except Exception as e:\n            print(e) \nmain()",
+            "lines": "79"
         }
     ]
 }

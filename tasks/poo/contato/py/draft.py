@@ -27,10 +27,11 @@ class Contact:
     def setName(self, name: str) -> None:
         self.__name = name
 
-    def addFone(self, id: str, number: str) -> None: 
-        self.__fones.append(f"{id}:{number}")
+    def addFone(self, id: str, number: str) -> None:
+        self.__fones.append(f"{id}:{number}") 
 
-    #def rmFone(self, index: int) -> None:
+    def rmFone(self, index: int) -> None:
+        del self.__fones[index]
 
     #def toogleFavorited(self) -> None:
 
@@ -38,32 +39,10 @@ class Contact:
 
     def __str__(self) -> str:
         fones = ", ".join(self.__fones)
-        return f"- {self.__name} {fones}"
-    
-class Agenda:
-    def __init__(self):
-        self.__contacts: list[Contact] = []
-
-    #def __findPosByName(self, name: str) -> int:
-
-    def getContacts(self):
-        return self.__contacts
-
-    #def addContact(self, name: str, fones: list[Fone]):
-
-    #def getContact(self, name: str) -> Contact | None:
-
-    #def rmContact(self. name: str):
-
-    #def search(self, pattern: str):
-
-    #def getFavorited(self):
-
-    def __str__(self) -> str:
-        return f""
+        return f"- {self.__name} [{fones}]"
 
 def main():
-    agenda = Agenda
+    contact = Contact
     while True:
         line: str = input()
         print("$" + line)
@@ -72,8 +51,14 @@ def main():
             if args[0] == "end":
                 break
             elif args[0] == "show":
-                print(agenda)
-            #elif args[0] == "add":
+                print(contact)
+            elif args[0] == "init":
+                name = args[1]
+                contact = Contact(name)
+            elif args[0] == "add":
+                id = args[1]
+                number = int(args[2])
+                contact.addFone(id, number)
             else:
                 print("comando invalido")
         except Exception as e:
