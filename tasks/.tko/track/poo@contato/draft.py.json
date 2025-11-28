@@ -112,8 +112,98 @@
         },
         {
             "label": "2025-11-28_18-41-33",
-            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id: str = id\n        self.__number: str = number\n\n    #def isValid(self) -> bool:\n\n    def getId(self) -> str:\n        return self.__id\n    def getNumber(self) -> str:\n        return self.__number\n\n    def __str__(self) -> str:\n        return f\"\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.__favorited: bool\n        self.__fones: list[Fone] = []\n        self.__name: str = name\n\n    def getFones(self):\n        return self.__fones\n    def getName(self) -> str:\n        return self.__name\n    \n    def setName(self, name: str) -> None:\n        self.__name = name\n\n    def addFone(self, id: str, number: str) -> None:\n        self.__fones.append(f\"{id}:{number}\") \n\n    def rmFone(self, index: int) -> None:\n        del self.__fones[index]\n\n    #def toogleFavorited(self) -> None:\n\n    #def isFavorited(self) -> bool:\n\n    def __str__(self) -> str:\n        fones = \", \".join(self.__fones)\n        return f\"- {self.__name} {fones}\"\n\ndef main():\n    contact = Contact\n    while True:\n        line: str = input()\n        print(\"$\" + line)\n        args: list[str] = line.split(\" \")\n        try:\n            if args[0] == \"end\":\n                break\n            elif args[0] == \"show\":\n                print(contact)\n            elif args[0] == \"init\":\n                name = args[1]\n                contact = Contact(name)\n            elif args[0] == \"add\":\n                id = args[1]\n                number = int(args[2])\n                contact.addFone(id, number)\n            else:\n                print(\"comando invalido\")\n        except Exception as e:\n            print(e) \nmain()",
+            "content": "@@ -1015,17 +1015,15 @@\n me%7D \n-%5B\n %7Bfones%7D\n-%5D\n %22%0A%0Ad\n",
             "lines": "66"
+        },
+        {
+            "label": "2025-11-28_18-45-51",
+            "content": "@@ -1561,117 +1561,8 @@\n er)%0A\n-            elif args%5B0%5D == %22rm%22:%0A                index = int(args%5B1%5D)%0A                contact.rmFone(index)%0A\n     \n",
+            "lines": "66"
+        },
+        {
+            "label": "2025-11-28_18-47-05",
+            "content": "@@ -116,24 +116,25 @@\n number%0A%0A    \n+#\n def isValid(\n@@ -151,106 +151,8 @@\n ool:\n-%0A        if self.__number is not 0123456789():%0A            raise Exception(%22fail: invalid number%22)\n %0A%0A  \n",
+            "lines": "69"
+        },
+        {
+            "label": "2025-11-28_18-58-19",
+            "content": "@@ -162,12 +162,8 @@\n  if \n-not \n self\n@@ -175,16 +175,26 @@\n mber\n-.isdigit\n+ is not 0123456789\n ():%0A\n",
+            "lines": "71"
+        },
+        {
+            "label": "2025-11-28_19-06-55",
+            "content": "@@ -141,16 +141,20 @@\n elf) -%3E \n+bool\n :%0A      \n",
+            "lines": "71"
+        },
+        {
+            "label": "2025-11-28_19-07-14",
+            "content": "@@ -137,28 +137,24 @@\n id(self) -%3E \n-None\n :%0A        if\n",
+            "lines": "71"
+        },
+        {
+            "label": "2025-11-28_19-07-17",
+            "content": "@@ -141,20 +141,20 @@\n elf) -%3E \n-bool\n+None\n :%0A      \n",
+            "lines": "71"
+        },
+        {
+            "label": "2025-11-28_19-07-31",
+            "content": "@@ -147,38 +147,38 @@\n %3E bool:%0A        \n-return\n+if not\n  self.__number.i\n@@ -185,16 +185,69 @@\n sdigit()\n+:%0A            raise Exception(%22fail: invalid number%22)\n %0A%0A    de\n",
+            "lines": "71"
+        },
+        {
+            "label": "2025-11-28_19-10-46",
+            "content": "@@ -749,136 +749,8 @@\n ne:%0A\n-        fone = Fone(id, number)%0A        if not fone.isValid():%0A            raise Exception(%22fail: invalid number%22)%0A            %0A\n     \n@@ -778,12 +778,25 @@\n nd(f\n-one)\n+%22%7Bid%7D:%7Bnumber%7D%22) \n %0A%0A  \n@@ -1542,15 +1542,20 @@\n r = \n+int(\n args%5B2%5D\n+)\n %0A   \n",
+            "lines": "70"
+        },
+        {
+            "label": "2025-11-28_19-21-15",
+            "content": "@@ -1121,24 +1121,8 @@\n oin(\n-str(f) for f in \n self\n",
+            "lines": "74"
+        },
+        {
+            "label": "2025-11-28_19-22-41",
+            "content": "@@ -781,42 +781,8 @@\n er)%0A\n-        self.__fones.append(fone)%0A\n     \n@@ -859,16 +859,63 @@\n number%22)\n+%0A            %0A        self.__fones.append(fone)\n %0A%0A    de\n",
+            "lines": "74"
+        },
+        {
+            "label": "2025-11-28_19-23-33",
+            "content": "@@ -353,35 +353,8 @@\n n f%22\n-%7Bself.__id%7D:%7Bself.__number%7D\n %22%0A  \n@@ -769,32 +769,66 @@\n one(id, number)%0A\n+        self.__fones.append(fone)%0A\n         if not f\n@@ -897,55 +897,8 @@\n er%22)\n-%0A            %0A        self.__fones.append(fone)\n %0A%0A  \n",
+            "lines": "73"
+        },
+        {
+            "label": "2025-11-28_19-25-19",
+            "content": "@@ -159,15 +159,13 @@\n     \n-for _ i\n+retur\n n se\n@@ -179,105 +179,18 @@\n mber\n-:%0A            if not (_.isdigit() or _ in %22()%22):%0A                return False%0A        return True\n+.isdigit()\n %0A%0A  \n",
+            "lines": "74"
+        },
+        {
+            "label": "2025-11-28_19-35-02",
+            "content": "@@ -1334,20 +1334,23 @@\n ntact = \n-None\n+Contact\n %0A    whi\n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-11-28_19-38-57",
+            "content": "@@ -227,20 +227,8 @@\n %22()%22\n- or _ in %22.%22\n ):%0A \n@@ -1334,23 +1334,20 @@\n ntact = \n-Contact\n+None\n %0A    whi\n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-11-28_19-43-59",
+            "content": "@@ -965,17 +965,36 @@\n eption(%22\n-C\n+fail: invalid number\n %22)%0A     \n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-11-28_19-56-38",
+            "content": "@@ -231,16 +231,20 @@\n  or _ in\n+ %22.%22\n ):%0A     \n@@ -969,28 +969,9 @@\n on(%22\n-fail: invalid number\n+C\n %22)%0A \n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-11-28_19-59-51",
+            "content": "@@ -235,12 +235,8 @@\n _ in\n- %22.%22\n ):%0A \n",
+            "lines": "77"
+        },
+        {
+            "label": "2025-11-28_20-09-29",
+            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id: str = id\n        self.__number: str = number\n\n    def isValid(self) -> bool:\n        for _ in self.__number:\n            if not (_.isdigit() or _ in \"()\" or _ in \".\"):\n                return False\n        return True\n\n    def getId(self) -> str:\n        return self.__id\n    def getNumber(self) -> str:\n        return self.__number\n\n    def __str__(self) -> str:\n        return f\"{self.__id}:{self.__number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.__favorited: bool\n        self.__fones: list[Fone] = []\n        self.__name: str = name\n\n    def getFones(self):\n        return self.__fones\n    def getName(self) -> str:\n        return self.__name\n    \n    def setName(self, name: str) -> None:\n        self.__name = name\n\n    def addFone(self, id: str, number: str) -> None:\n        fone = Fone(id, number)\n        if not fone.isValid():\n            raise Exception(\"fail: invalid number\")\n            \n        self.__fones.append(fone)\n\n    def rmFone(self, index: int) -> None:\n        del self.__fones[index]\n\n    #def toogleFavorited(self) -> None:\n\n    #def isFavorited(self) -> bool:\n\n    def __str__(self) -> str:\n        fones = \", \".join(str(f) for f in self.__fones)\n        return f\"- {self.__name} [{fones}]\"\n\ndef main():\n    contact = Contact\n    while True:\n        line: str = input()\n        print(\"$\" + line)\n        args: list[str] = line.split(\" \")\n        try:\n            if args[0] == \"end\":\n                break\n            elif args[0] == \"show\":\n                print(contact)\n            elif args[0] == \"init\":\n                name = args[1]\n                contact = Contact(name)\n            elif args[0] == \"add\":\n                id = args[1]\n                number = args[2]\n                contact.addFone(id, number)\n            elif args[0] == \"rm\":\n                index = int(args[1])\n                contact.rmFone(index)\n            else:\n                print(\"comando invalido\")\n        except Exception as e:\n            print(e) \nmain()",
+            "lines": "77"
         }
     ]
 }

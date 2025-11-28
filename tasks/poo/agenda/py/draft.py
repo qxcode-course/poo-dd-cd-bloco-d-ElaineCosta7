@@ -3,7 +3,11 @@ class Fone:
         self.__id: str = id
         self.__number: str = number
 
-    #def isValid(self) -> bool:
+    def isValid(self) -> bool:
+        for _ in self.__number:
+            if not (_.isdigit() or _ in "()" or _ in "."):
+                return False
+        return True
 
     def getId(self) -> str:
         return self.__id
@@ -11,7 +15,7 @@ class Fone:
         return self.__number
 
     def __str__(self) -> str:
-        return f""
+        return f"{self.__id}:{self.__number}"
     
 class Contact:
     def __init__(self, name: str):
@@ -28,17 +32,22 @@ class Contact:
         self.__name = name
 
     def addFone(self, id: str, number: str) -> None: 
-        self.__fones.append(f"{id}:{number}")
+        fone = Fone(id, number)
+        if not fone.isValid():
+            raise Exception("fail: invalid number")
+        
+        self.__fones.append(fone)
 
-    #def rmFone(self, index: int) -> None:
+    def rmFone(self, index: int) -> None:
+        del self.__fones[index]
 
     #def toogleFavorited(self) -> None:
 
     #def isFavorited(self) -> bool:
 
     def __str__(self) -> str:
-        fones = ", ".join(self.__fones)
-        return f"- {self.__name} {fones}"
+        fones = ", ".join(str(f) for f in self.__fones)
+        return f"- {self.__name} [{fones}]"
     
 class Agenda:
     def __init__(self):
