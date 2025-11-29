@@ -19,7 +19,7 @@ class Fone:
     
 class Contact:
     def __init__(self, name: str):
-        self.__favorited: bool
+        self.__favorited: bool = False
         self.__fones: list[Fone] = []
         self.__name: str = name
 
@@ -41,13 +41,16 @@ class Contact:
     def rmFone(self, index: int) -> None:
         del self.__fones[index]
 
-    #def toogleFavorited(self) -> None:
+    def toogleFavorited(self) -> None:
+        self.__favorited = not self.__favorited
 
-    #def isFavorited(self) -> bool:
+    def isFavorited(self) -> bool:
+        return self.__favorited
 
     def __str__(self) -> str:
+        favorited = "@ " if self.__favorited is True else "- "
         fones = ", ".join(str(f) for f in self.__fones)
-        return f"- {self.__name} [{fones}]"
+        return f"{favorited}{self.__name} [{fones}]"
 
 def main():
     contact = Contact
@@ -70,6 +73,8 @@ def main():
             elif args[0] == "rm":
                 index = int(args[1])
                 contact.rmFone(index)
+            elif args[0] == "tfav":
+                contact.toogleFavorited()
             else:
                 print("comando invalido")
         except Exception as e:
