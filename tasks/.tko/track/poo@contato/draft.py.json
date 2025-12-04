@@ -252,6 +252,26 @@
         },
         {
             "label": "2025-11-29_00-19-25",
+            "content": "@@ -881,33 +881,16 @@\n %3E None:%0A\n-        try:%0A    \n         \n@@ -921,22 +921,37 @@\n         \n-except\n+if not fone.isValid()\n :%0A      \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-29_00-48-28",
+            "content": "@@ -934,46 +934,8 @@\n er)%0A\n-            self.__fones.append(fone)%0A\n     \n",
+            "lines": "83"
+        },
+        {
+            "label": "2025-11-29_00-48-46",
+            "content": "@@ -873,32 +873,49 @@\n : str) -%3E None:%0A\n+        try:%0A    \n         fone = F\n@@ -930,29 +930,16 @@\n number)%0A\n-        try:%0A\n         \n@@ -1035,16 +1035,63 @@\n number%22)\n+%0A            %0A        self.__fones.append(fone)\n %0A%0A    de\n",
+            "lines": "84"
+        },
+        {
+            "label": "2025-11-29_00-49-11",
+            "content": "@@ -925,29 +925,65 @@\n     \n-if not fone.isValid()\n+try:%0A            self.__fones.append(fone)%0A        except\n :%0A  \n@@ -1035,55 +1035,8 @@\n er%22)\n-%0A            %0A        self.__fones.append(fone)\n %0A%0A  \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-29_00-49-31",
             "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.__id: str = id\n        self.__number: str = number\n\n    def isValid(self) -> bool:\n        for _ in self.__number:\n            if not (_.isdigit() or _ in \"()\" or _ in \".\"):\n                return False\n        return True\n\n    def getId(self) -> str:\n        return self.__id\n    def getNumber(self) -> str:\n        return self.__number\n\n    def __str__(self) -> str:\n        return f\"{self.__id}:{self.__number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.__favorited: bool = False\n        self.__fones: list[Fone] = []\n        self.__name: str = name\n\n    def getFones(self):\n        return self.__fones\n    def getName(self) -> str:\n        return self.__name\n    \n    def setName(self, name: str) -> None:\n        self.__name = name\n\n    def addFone(self, id: str, number: str) -> None:\n        fone = Fone(id, number)\n        if not fone.isValid():\n            raise Exception(\"fail: invalid number\")\n            \n        self.__fones.append(fone)\n\n    def rmFone(self, index: int) -> None:\n        del self.__fones[index]\n\n    def toogleFavorited(self) -> None:\n        self.__favorited = not self.__favorited\n\n    def isFavorited(self) -> bool:\n        return self.__favorited\n\n    def __str__(self) -> str:\n        favorited = \"@ \" if self.__favorited is True else \"- \"\n        fones = \", \".join(str(f) for f in self.__fones)\n        return f\"{favorited}{self.__name} [{fones}]\"\n\ndef main():\n    contact = Contact\n    while True:\n        line: str = input()\n        print(\"$\" + line)\n        args: list[str] = line.split(\" \")\n        try:\n            if args[0] == \"end\":\n                break\n            elif args[0] == \"show\":\n                print(contact)\n            elif args[0] == \"init\":\n                name = args[1]\n                contact = Contact(name)\n            elif args[0] == \"add\":\n                id = args[1]\n                number = args[2]\n                contact.addFone(id, number)\n            elif args[0] == \"rm\":\n                index = int(args[1])\n                contact.rmFone(index)\n            elif args[0] == \"tfav\":\n                contact.toogleFavorited()\n            else:\n                print(\"comando invalido\")\n        except Exception as e:\n            print(e) \nmain()",
             "lines": "82"
         }
